@@ -6,13 +6,13 @@
 
 Generative Adversarial Networks (GANs) are a class of deep learning models used for generative tasks, such as image generation. GANs consist of two neural networks, the generator and the discriminator, which are trained together in a game-theoretic framework. The key idea is that these two networks are adversaries, with one trying to generate realistic data (the generator), and the other trying to distinguish between real and generated data (the discriminator).
 
-## Generator ($G$)
+## Generator
 
 The generator takes a random noise vector, usually denoted as $z$, sampled from a simple distribution (e.g., Gaussian distribution), as input. It transforms this noise vector into a data point, typically an image, denoted as $G(z)$. The goal of the generator is to produce data that is indistinguishable from the real data.
 
 Mathematically, the generator function $G$ is a neural network parameterized by weights and biases $\theta$. It learns to approximate the true data distribution $p_{data}(x)$ with a generated distribution $p_{gen}(x)$. This can be represented as $G(z; \theta) \approx p_{data}(x)$.
 
-## Discriminator ($D$)
+## Discriminator
 
 The discriminator takes an input data point (either real or generated), denoted as $x$, an outputs a probability score, $D(x)$, which represents the likelihood that $x$ is a real data point.
 
@@ -22,9 +22,9 @@ Mathematically, the discriminator function $D$ is another neural network with we
 
 GANs are trained using a minimax game between the generator and the discriminator. The objecttive function can be expressed as:
 
-$$\large \min_G \max_D V(D, G) = \mathbb{E}_{x \sim p_{data}(x)}[logD(x)] + \mathbb{E}_{p_z(z)}[log(1 - D(G(z)))]$$
+$$\large \min_G \max_D V(D, G) = \mathbb{E}_ {x \sim p_{data}(x)}[logD(x)] + \mathbb{E}_{p_z(z)}[log(1 - D(G(z)))]$$
 
-The first term $\mathbb{E}_{x \sim p_{data}(x)}[logD(x)]$ encourages the discriminator to correctly classify real data as real, and the second term $\mathbb{E}_{p_z(z)}[log(1 - D(G(z)))]$ encourages the generator to produce data that the discriminator classifies as real.
+The first term $\mathbb{E}_ {x \sim p_{data}(x)}[logD(x)]$ encourages the discriminator to correctly classify real data as real, and the second term $\mathbb{E}_{p_z(z)}[log(1 - D(G(z)))]$ encourages the generator to produce data that the discriminator classifies as real.
 
 ## Training
 
